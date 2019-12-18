@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Таблица Пользователей и их Социальных сетей</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <h1>CRUD Function Based View Example</h1>  
+    <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">NickName</th>
+                    <th scope="col">Link</th>
+                    <th scope="col">Social Network</th>
+                    <th scope="col">EDIT</th>
+                    <th scope="col">DELETE</th>
+                </tr>
+            </thead>
+            <tbody>
+                    
+            {% for socialNetworks in object_list %}
+                <tr>
+                    <td scope="row">{{ socialNetworks.title }}</td>
+                    <td scope="">{{  socialNetworks.url_cn }}</td>
+                    <td scope="">{{  socialNetworks.type_cn.title_cn }}</td>
+                    <td scope=""><a href="{% url 'CRUD_app:socialNetworks_edit' socialNetworks.id %}">edit</a> </td>
+                    <td scope=""><a href="{% url 'CRUD_app:socialNetworks_delete' socialNetworks.id %}">delete</a></td>
+               
+                </tr>
+            {% endfor %} 
+        </tr>
+    </tbody>
+    </table>
+   
+ <a href="{% url 'CRUD_app:socialNetworks_new' %}">Add</a>  
+</body>
+</html>
+
